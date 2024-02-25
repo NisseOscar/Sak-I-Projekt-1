@@ -1,8 +1,7 @@
 
 \documentclass[11pt]{article}
 \usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
-\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
-%\geometry{landscape}                % Activate for for rotated page geometry
+\geometry{letterpaper} 
 \usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
 \usepackage{graphicx}
 \usepackage{amsmath,amssymb}
@@ -17,6 +16,13 @@
 \usepackage{color} % For custom colors
 \usepackage{listings} % For code listings
 \usepackage{xcolor} % Enhanced color support
+
+\usepackage{a4wide,fancyhdr,tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{MT7072 Assignment 1}
+\fancyhead[R]{Andreas Hansson \& Oscar Johansson}
+\fancyfoot[C]{\thepage}
 
 % Define custom colors
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -44,8 +50,6 @@
     tabsize=2
 }
 
-
-
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
 \title{Report II - MT7027 Risk Models and Reserving in Non-Life Insurance}
@@ -71,7 +75,7 @@ Finally we provide the code that has generated the output for these results.
 
 \section*{Mathematical Background}
 
-\subsection{Claim-Severity Model}
+\subsection*{Claim-Severity Model}
 In this project we will model our claim cost as 2 different processes, a claim arrival process and a claim severity model.
 In doing so we assume that the claim arrival is indipendent from the claim cost.
 Modeling these separately comes with practical applications, as the arrival process and claim severity often follow parametric distributions, often the poisson and gamma respectively.
@@ -79,13 +83,13 @@ One could dismiss these distribution and use other technology to predict claims,
 Using the Tweedie, we would assume a poisson-gamma compount distribution, which may or may not be suitable.
 
 
-\subsection{Kolmogorov-Smirnov}
+\subsection*{Kolmogorov-Smirnov}
 In analysing the distributions observe, and understand the best model fit, we use the Kolmogorov–Smirnov test to compare the quantile to quantile plots.
 In using the Kolmogorov–Smirnov (K-S) test, we calculate the maximum distance between the empirical distribution function of the sample and the cumulative distribution function of the reference distribution. 
 This non-parametric test provides a critical value for the significance level chosen, allowing us to determine whether the observed sample distribution significantly differs from the theoretical distribution. 
 This approach is non-parametric and used as much of the distribution analysis we do is based on qq-plots, which is what the Kolmogorov–Smirnov test measures.
 
-\subsection{Overdispersion}
+\subsection*{Overdispersion}
 An other property which will be discussed through this assignment is overdispersion, and namely the quasi-poisson distribution.
 Overdispersion is a phenomenon observed when the variance in the data is higher than the mean. This condition often indicates that the data do not follow a Poisson distribution, which assumes equality between the mean and variance. 
 In such cases, the quasi-Poisson distribution becomes a valuable tool for analysis. 
@@ -579,7 +583,7 @@ In the scenario of extreme events, like extreme weather or natural perils, this 
 \end{figure}
 
 
-\subsubsection{The SL Cover}
+\subsubsection*{The SL Cover}
 
 In applying the SL cover we study how the final total claim cost per branch can be limited through percentile analysis.
 Estimating these quantiles and plotting the final claim cost with and without reinsurance cover, we get the results shown in figure \ref{a6:simulation}.
@@ -637,7 +641,7 @@ Mostly as we have such normality in our data that an extreme quantile event is n
 Instead the XL-covers may be more suitable due to large and small claim nature of both our insurance branches.
 
 
-\subsubsection{The SL Cover 2}
+\subsubsection*{The SL Cover 2}
 The final cover is the SL Cover across both branches, studying this we see in figure \ref{a7:claim_cost} very similar results to \ref{a6:claim_cost}.
 Only in very rare circumstances do we get use of this reinsurance, and only then we even more rarely cover the excess premium reinsurance company is charging us.
 
@@ -686,10 +690,10 @@ The XL cover would be more financially stable which is practical if we have inve
 The SL cover would be suitable if we expect changes not yet seen in the data, like extreme events which would cause larger intensity and claim size.
 If we want to maximize profits and take more risk we should avoid the reinsurance.
 
-\newpage
-\section*{Code}
+% \newpage
+% \section*{Code}
 
-\lstinputlisting[language=R, firstline=6]{code.r}
+% \lstinputlisting[language=R, firstline=6]{code.r}
 
 
 \end{document}  
